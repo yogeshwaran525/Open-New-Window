@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW WINDOW ON BUTTON CLICKED DISPLAY ANY MESSAGE</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        body{
+            box-sizing: border-box;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            height: 100vh;
+            background: #4e54c8;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        #btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            margin: 25% auto;
+            background-color: black;
+            color: #91f1f1;
+        }
+        #btn:hover{
+            background-color: #1d1d1d;
+            color: #172ce9;
+            transition: all 0.3s;
+        }
+        #container{
+            display: flex;
+            align-items: center;
+            justify-content:space-around;
+            padding: 10px;
+            margin: 12% auto;         
+            background-color: #4e54c8;
+            width: 550px;
+            height: 300px;
+            box-shadow: 2px 2px 3px 3px #70a4f1;
+        }
+        h1{
+            margin: 2px;
+            font-size: 2rem;
+        }
+        #button{
+            width:70px;
+            height: 35px;
+            background-color: #17eb9a;
+            border-radius: 5px;
+        }
+        #button:hover{
+            background-color: #bdbdbd;
+           cursor: pointer;
+        }
+       
+    </style>
+</head>
+<body>    
+    <button id="btn">MESSAGE</button>
+    <!-- <div id="window"></div> -->
+    <script>
+    const btn = document.getElementById('btn')
+    
+    // Message button click show th new window message
+    btn.addEventListener('click', e =>{
+
+        e.preventDefault();
+        btn.style.display = 'none'
+        const task_El = document.createElement('div')
+        task_El.classList.add('task-list')
+
+        const task_content_El = document.createElement('div')
+        task_content_El.classList.add('Innercontent')
+
+        task_El.appendChild(task_content_El);
+
+        const task_h1 = document.createElement('div')
+        task_h1.id = 'container'
+        task_h1.innerHTML = `<h1>User Message Display <br> In the window</h1><button id='button'>CLOSE</button>`
+
+        task_content_El.appendChild(task_h1);
+
+        document.body.appendChild(task_El);
+
+        // Close the poo-up box when click close button
+        document.querySelector('#button').addEventListener('click', deletefunction) 
+            
+        function deletefunction() {
+
+            document.body.removeChild(task_El)
+            btn.style.display = 'flex'
+        }
+    })
+
+
+    </script>
+</body>
+</html>
